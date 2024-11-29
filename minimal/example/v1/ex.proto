@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package minimal.example.v1;
+
+option go_package = "github.com/tobby-s/minimal-example";
+
+import "google/api/annotations.proto";
+
+service Service {
+  rpc Options (OptionsRequest) returns (OptionsResponse) {
+    option (google.api.http) = {
+      post: "/options"
+      body: "*"
+    };
+  }
+}
+
+message OptionsRequest {
+  repeated EntityRequest entities = 1;
+}
+
+message EntityRequest {
+  string id = 1;
+}
+
+message OptionsResponse {
+  string id = 1;
+}

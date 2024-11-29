@@ -1,0 +1,18 @@
+# buf.gen.yaml
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: go_package_prefix
+      value: github.com/tobby-s/minimal-example
+plugins:
+  - local: protoc-gen-go
+    out: generated/minimal-example
+    opt:
+      - paths=source_relative
+  - local: protoc-gen-go-grpc
+    out: generated/minimal-example
+    opt:
+      - paths=source_relative
+inputs:
+  - directory: .
